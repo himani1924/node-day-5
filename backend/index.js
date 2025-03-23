@@ -24,13 +24,13 @@ app.get("/todos", async (req, res) => {
 // new todo
 app.post("/todos", async (req, res) => {
     try {
-        const { title } = req.body;
-        if (!title) {
+        const { task } = req.body;
+        if (!task) {
             return res.status(400).json({ error: "Title is required" });
         }
         const result = await pool.query(
             "INSERT INTO todo (task) VALUES ($1) RETURNING *",
-            [title]
+            [task]
         );
         res.json(result.rows[0]);
     } catch (err) {

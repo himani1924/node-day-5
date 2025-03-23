@@ -10,9 +10,9 @@ describe(" To-Do test", () => {
     });
 
     test("/todos should add a new todo", async () => {
-        const res = await request(app).post("/todos").send({ title: "dummy" }).set("Content-Type", "application/json");
+        const res = await request(app).post("/todos").send({ task: "dummy" }).set("Content-Type", "application/json");
         expect(res.statusCode).toBe(200);
-        expect(res.body.title).toBe("dummy");
+        expect(res.body.task).toBe("dummy");
     });
 
 });
